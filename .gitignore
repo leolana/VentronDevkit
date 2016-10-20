@@ -1,9 +1,9 @@
-node_modules/
-bower_components/
+**/node_modules/
+**/bower_components/
 *.log
 
-build/
-dist/
+**/build/
+**/dist/
 
 **/.vscode/*
 **/!.vscode/settings.json
