@@ -38,7 +38,7 @@
                 // Blank Page
                 .state('blank', {
                     url: "/blank",
-                    templateUrl: "app/blank/blank.html",
+                    templateUrl: "app/sample/blank/blank.html",
                     data: { pageTitle: 'Blank Page Template' },
                     controller: "BlankController",
                     resolve: {
@@ -47,7 +47,7 @@
                                 name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                                 files: [
-                                    'app/blank/blank.controller.js'
+                                    'app/sample/blank/blank.controller.js'
                                 ]
                             });
                         }]
