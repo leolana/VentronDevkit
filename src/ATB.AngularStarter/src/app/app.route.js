@@ -70,7 +70,7 @@
                 //Login
                 .state('account', {
                     url: "/login",
-                    templateUrl: "account/login.html",
+                    templateUrl: "app/account/login.html",
                     controller: "loginController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -78,7 +78,7 @@
                                 name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
-                                    'account/login.controller.js'
+                                    'app/account/login.controller.js'
                                 ]
                             }]);
                         }]
@@ -86,7 +86,7 @@
                 })
 
                 // Dashboard
-                .state('dashboard', {
+                .state('index.dashboard', {
                     url: "/dashboard",
                     templateUrl: "app/dashboard/dashboard.html",
                     data: { pageTitle: 'Admin Dashboard Template' },
@@ -111,7 +111,7 @@
                 })
 
                 // Blank Page
-                .state('blank', {
+                .state('index.blank', {
                     url: "/blank",
                     templateUrl: "app/sample/blank/blank.html",
                     data: { pageTitle: 'Blank Page Template' },
@@ -130,7 +130,7 @@
                 })
 
                 // AngularJS plugins
-                .state('fileupload', {
+                .state('index.fileupload', {
                     url: "/file_upload",
                     templateUrl: "app/sample/file_upload.html",
                     data: { pageTitle: 'AngularJS File Upload' },
@@ -153,7 +153,7 @@
                 })
 
                 // UI Select
-                .state('uiselect', {
+                .state('index.uiselect', {
                     url: "/ui_select",
                     templateUrl: "app/sample/ui-select/ui_select.html",
                     data: { pageTitle: 'AngularJS Ui Select' },
@@ -178,7 +178,7 @@
                 })
 
                 // UI Bootstrap
-                .state('uibootstrap', {
+                .state('index.uibootstrap', {
                     url: "/ui_bootstrap",
                     templateUrl: "app/sample/ui_bootstrap.html",
                     data: { pageTitle: 'AngularJS UI Bootstrap' },
@@ -196,7 +196,7 @@
                 })
 
                 // Tree View
-                .state('tree', {
+                .state('index.tree', {
                     url: "/tree",
                     templateUrl: "app/sample/tree.html",
                     data: { pageTitle: 'jQuery Tree View' },
@@ -219,7 +219,7 @@
                 })
 
                 // Form Tools
-                .state('formtools', {
+                .state('index.formtools', {
                     url: "/form-tools",
                     templateUrl: "app/sample/form_tools.html",
                     data: { pageTitle: 'Form Tools' },
@@ -255,7 +255,7 @@
                 })
 
                 // Date & Time Pickers
-                .state('pickers', {
+                .state('index.pickers', {
                     url: "/pickers",
                     templateUrl: "app/sample/pickers.html",
                     data: { pageTitle: 'Date & Time Pickers' },
@@ -288,7 +288,7 @@
                 })
 
                 // Custom Dropdowns
-                .state('dropdowns', {
+                .state('index.dropdowns', {
                     url: "/dropdowns",
                     templateUrl: "app/sample/dropdowns.html",
                     data: { pageTitle: 'Custom Dropdowns' },
@@ -317,7 +317,7 @@
                 })
 
                 // Advanced Datatables
-                .state('datatablesmanaged', {
+                .state('index.datatablesmanaged', {
                     url: "/datatables/managed",
                     templateUrl: "app/sample/datatables/managed.html",
                     data: { pageTitle: 'Advanced Datatables' },
@@ -343,7 +343,7 @@
                 })
 
                 // Ajax Datetables
-                .state('datatablesajax', {
+                .state('index.datatablesajax', {
                     url: "/datatables/ajax",
                     templateUrl: "app/sample/datatables/ajax.html",
                     data: { pageTitle: 'Ajax Datatables' },
@@ -371,7 +371,7 @@
                 })
 
                 // User Profile
-                .state("profile", {
+                .state("index.profile", {
                     url: "/profile",
                     templateUrl: "app/profile/main.html",
                     data: { pageTitle: 'User Profile' },
@@ -419,7 +419,7 @@
                 })
 
                 // Todo
-                .state('todo', {
+                .state('index.todo', {
                     url: "/todo",
                     templateUrl: "app/todo/todo.html",
                     data: { pageTitle: 'Todo' },
