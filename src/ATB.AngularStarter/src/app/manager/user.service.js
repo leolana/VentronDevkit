@@ -1,25 +1,30 @@
-(function() {
-    "use strict";
+(function () {
+    'use strict';
 
-    angular.module("inspinia")
-        .factory("userService", ["$http", function ($http) {
-                return (function(service) {
-                           service.get = function() {
-                               return $http.get("/User/List")
-                                           .then(function(response) {
-                                               return response.data;
-                                           })
-                                           .catch(function() {
-                                               var message = i18n.t("alerts:error.list_user");
-                                               var title = i18n.t("alerts:error.error");
+    angular
+        .module('ATB')
+        .factory('userService', userService);
 
-                                               toastr.error(message, title);
+    userService.$inject = ['$http'];
+    function service($http) {
+        var service = {
+            get: get
+        };
 
-                                           });
-                           };
+        return service;
 
-                           return service;
-                       }({}));
-            }
-        ]);
-}());
+        function get() {
+            return $http.get("/User/List")
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(function () {
+                    var message = i18n.t("alerts:error.list_user");
+                    var title = i18n.t("alerts:error.error");
+
+                    toastr.error(message, title);
+
+                });
+        }
+    }
+})();
