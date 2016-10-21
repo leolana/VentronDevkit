@@ -17,7 +17,9 @@ gulp.task('localhost', function() {
 
 gulp.task('localhost-live', function() {
   connect.server({
-    livereload: true
+    livereload: true,
+	port: 8888,
+	root: 'src'
   });
 });
 
@@ -130,3 +132,5 @@ gulp.task('prettify', function() {
    		})).
    		pipe(gulp.dest('./'));
 });
+
+gulp.task('default', ['localhost-live']);
