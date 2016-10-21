@@ -3,10 +3,10 @@
 
     angular
         .module('ATB')
-        .controller('LoginController', LoginController);
+        .controller('loginController', loginController);
 
-    LoginController.$inject = ['$rootScope', '$scope', '$http', '$timeout', '$location', 'authService', 'userNotificationService', 'NotificationService'];
-    function LoginController($rootScope, $scope, $http, $timeout, $location, authService, userNotificationService, NotificationService) {
+    loginController.$inject = ['$rootScope', '$scope', '$http', '$timeout', '$location'];
+    function loginController($rootScope, $scope, $http, $timeout, $location) {
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initComponents(); // init core components
@@ -41,18 +41,18 @@
                 return;
             }
 
-            authService.login(vm.loginData)
-                .then(function (response) {
-                    // vm.closeLogin();
-                    vm.loginData.email = "";
-                    vm.loginData.password = "";
-                    // NotificationService.success("Atenção", "ENTROU.", true);
-                    $location.path('/dashboard');
+            // authService.login(vm.loginData)
+            //     .then(function (response) {
+            //         // vm.closeLogin();
+            //         vm.loginData.email = "";
+            //         vm.loginData.password = "";
+            //         // NotificationService.success("Atenção", "ENTROU.", true);
+            //         $location.path('/dashboard');
 
-                },
-                function (err) {
-                    NotificationService.error("Atenção", err.error_description, false);
-                });
+            //     },
+            //     function (err) {
+            //         NotificationService.error("Atenção", err.error_description, false);
+            //     });
         };
 
         // set sidebar closed and body solid layout mode
