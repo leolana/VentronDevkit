@@ -1,0 +1,32 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight" ng-controller="UserController as users"
+     ng-init="main.loadLanguage('.wrapper.wrapper-content')">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h2 data-i18n="page_head.users"></h2>
+                    <div class="clients-list">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <div class="input-group">
+                                    <input type="text" data-i18n="[placeholder]label.search_users" class="input form-control" ng-model="q">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary"> <i class="fa fa-search"></i> <span data-i18n="label.search"></span></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <button class="btn btn-success btn-outline full-width" ui-sref="index.register"><i class="fa fa-plus"></i> <span data-i18n="label.user"></span></button>
+                            </div>
+                        </div>
+                        <div class="clients-list">
+                            <div class="grid"
+                                 ui-grid="users.gridOptions"
+                                 ui-grid-pagination></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

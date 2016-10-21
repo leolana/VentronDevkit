@@ -1,0 +1,159 @@
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="GroupsController as groups"
+     ng-init="main.loadLanguage('.wrapper.wrapper-content')">
+    <div class="ibox">
+        <div class="ibox-content">
+            <h2 data-i18n="page_head.groups"></h2>
+            <div class="row">
+                <div class="col-xs-10">
+                    <div class="input-group">
+                        <input type="text" data-i18n="[placeholder]label.search_groups" class="input form-control" ng-model="q">
+                        <span class="input-group-btn"><button type="button" class="btn btn-white"> <i class="fa fa-search text-navy"></i> <span data-i18n="label.search"></span></button></span>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-success btn-outline full-width" data-toggle="modal" data-target="#groupCreate"><i class="fa fa-plus"></i> <span data-i18n="label.group"></span></button>
+                </div>
+            </div>
+            <div class="clients-list">
+                <div ng-slimscroll style="max-height:500px" height="">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="" data-i18n="label.groups"></th>
+                                    <th width="100px"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="groupItem in groups.groupsList | filter: q | orderBy: 'Name'">
+                                    <td>{{groupItem.Name}}</td>
+                                    <td>
+                                        <a ng-click="groups.selectGroup(groupItem)"
+                                           data-i18n="[title]page.group.btn.permissions"
+                                           data-target="#groupPermissions" data-toggle="modal"
+                                           class="btn btn-xs btn-success">
+                                            <i class="fa fa-unlock-alt fa-small fa-width-fixed"></i>
+                                        </a>
+                                        <!-- lista de permssionados -->
+                                        <a class="btn btn-xs btn-success"
+                                           data-i18n="[title]page.group.btn.users"
+                                           ng-click="groups.selectGroup(groupItem)"
+                                           data-target="#groupUsers" data-toggle="modal">
+                                            <i class="fa fa-user fa-small fa-width-fixed"></i>
+                                        </a>
+                                        <a class="btn btn-xs btn-success"
+                                           data-i18n="[title]page.group.btn.edit"
+                                           ng-click="groups.selectGroup(groupItem)"
+                                           data-target="#groupEdit" data-toggle="modal">
+                                            <i class="fa fa-pencil fa-small fa-width-fixed"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="groupCreate" class="modal inmodal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-users modal-icon"></i>
+                    <h4 class="modal-title" data-i18n="label.new_group"></h4>
+                </div>
+                <form ng-submit="groups.create()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label data-i18n="label.name"></label>
+                            <input type="text" class="form-control" ng-model="groups.newGroup.Name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-white" type="button" data-i18n="label.dismiss"></button>
+                        <button class="btn btn-primary" type="submit" data-i18n="label.save"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="groupEdit" class="modal inmodal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-users modal-icon"></i>
+                    <h4 class="modal-title" data-i18n="label.edit_group"></h4>
+                    <h4 class="modal-title"><small>{{groups.groupSelected.Name}}</small></h4>
+                </div>
+                <form ng-submit="groups.save()">
+                    <div class="modal-body">
+                        <!--<div class="form-group">
+                            <label class="control-label" data-i18n="label.status"></label>
+                            <div class="checkbox checkbox-primary">
+                                <input id="statusAtivo" type="checkbox" ng-model="groups.groupSelected.status">
+                                <label for="statusAtivo" data-i18n="label.active"></label>
+                            </div>
+                            <!-- TODO: checkbox to toggle (ativo / inativo) -- >
+                        </div>-->
+                        <div class="form-group">
+                            <label data-i18n="label.name"></label>
+                            <input type="text" class="form-control" ng-model="groups.groupSelected.Name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-white" type="button" data-i18n="label.dismiss"></button>
+                        <button class="btn btn-primary" type="submit" data-i18n="label.save"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="groupPermissions" class="modal inmodal fade in">
+        <div class="modal-dialog modal-lg" ng-init="group = groups.groupSelected">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title"><i class="fa fa-unlock-alt"></i> <span data-i18n="label.groups"></span> <small>({{groups.groupSelected.Name}})</small></h4>
+                    <h4 class="modal-title"><small>Perfil:  {{groups.groupSelected.Name}}</small></h4>
+                </div>
+                <div class="modal-body">
+                    <picklist list="groups.permissionsList"
+                              right-list="groups.groupSelected.Permissions"
+                              description="Name"
+                              height-list="300px"></picklist>
+
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-white" type="button" data-i18n="label.dismiss"></button>
+                    <button class="btn btn-primary" ng-click="groups.setPermissions()" data-i18n="label.save"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="groupUsers" class="modal inmodal fade in">
+        <div class="modal-dialog modal-lg" ng-init="group = groups.groupSelected">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title"><i class="fa fa-user"></i> <span data-i18n="label.users"></span> <small>({{groups.groupSelected.Name}})</small></h4>
+                </div>
+                <div class="modal-body">
+                    <picklist list="groups.users" description="Name"
+                              right-list="groups.groupSelected.Users"
+                              height-list="300px"></picklist>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-white" type="button" data-i18n="label.dismiss"></button>
+                    <button class="btn btn-primary" ng-click="groups.givePermissions()" data-i18n="label.save"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

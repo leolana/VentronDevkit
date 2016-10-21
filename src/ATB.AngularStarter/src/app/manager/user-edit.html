@@ -1,0 +1,77 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight" ng-controller="UserEditController as user"
+     ng-init="main.loadLanguage('.wrapper.wrapper-content')">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h2 data-i18n="page_head.user"></h2>
+                    <div class="clients-list">
+                        <div class="tab-content">
+                            <form class="form-horizontal" ng-submit="user.save()">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.status"></label>
+                                    <div class="col-lg-4">
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="statusAtivo" type="checkbox" ng-model="user.edit.status">
+                                            <label for="statusAtivo" data-i18n="label.active"></label>
+                                        </div>
+                                        <!-- TODO: checkbox to toggle (ativo / inativo) -->
+                                    </div>
+                                    <label class="col-lg-2 control-label" data-i18n="label.account_type"></label>
+                                    <div class="col-lg-4"><span class="checkbox">{{user.edit.type}}</span></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.name"></label>
+                                    <div class="col-lg-10"><input type="text" class="form-control" ng-model="user.edit.name" /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.login"></label>
+                                    <div class="col-lg-10"><input type="text" readonly class="form-control disabled" ng-model="user.edit.login" /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.email"></label>
+                                    <div class="col-lg-10"><input type="text" readonly class="form-control disabled" ng-model="user.edit.email" /></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.role"></label>
+                                    <div class="col-lg-10">
+                                        <picklist list="user.groupsList"
+                                                  description="Name"
+                                                  right-list="user.edit.groups"
+                                                  height-list="200px"></picklist>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" data-i18n="label.data_visibilities"></label>
+                                    <div class="col-lg-10">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="allDataVisibilities" ng-model="user.edit.allDataVisibility">
+                                            <label for="allDataVisibilities" data-i18n="label.all_data_visibilities"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-show="!user.edit.allDataVisibility">
+                                    <label class="col-lg-2 control-label"></label>
+                                    <div class="col-lg-10">
+                                        <picklist list="user.dataVisibilitiesList"
+                                                  right-list="user.edit.dataVisibilities"
+                                                  description="Name"
+                                                  height-list="200px"></picklist>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-primary" type="submit" data-i18n="label.save"></button>
+                                        <button class="btn btn-default" ui-sref="index.users" data-i18n="label.see_users"></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

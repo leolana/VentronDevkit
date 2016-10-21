@@ -9,6 +9,81 @@
             $urlRouterProvider.otherwise("/dashboard");
 
             $stateProvider
+                //Index
+                .state('index', {
+                    templateUrl: "layout/content.html",
+                    abstract: true,
+                    resolve: {
+                        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                name: 'ATB',
+                                insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                                files: [
+                                    '../assets/global/plugins/morris/morris.css',
+                                    '../assets/global/plugins/morris/morris.min.js',
+                                    '../assets/global/plugins/morris/raphael-min.js',
+                                    '../assets/global/plugins/jquery.sparkline.min.js',
+                                    '../assets/pages/scripts/dashboard.min.js',
+
+                                    '../assets/global/plugins/fuelux/js/spinner.min.js',
+                                    '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                                    '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                                    '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                                    '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                                    '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                                    '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                                    '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                                    '../assets/global/plugins/typeahead/handlebars.min.js',
+                                    '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                                    '../assets/pages/scripts/components-form-tools-2.min.js',
+
+                                    '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                                    '../assets/global/plugins/select2/css/select2.min.css',
+                                    '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+
+                                    '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                                    '../assets/global/plugins/select2/js/select2.full.min.js',
+                                    '../assets/pages/scripts/components-bootstrap-select.min.js',
+                                    '../assets/pages/scripts/components-select2.min.js',
+
+                                    '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                                    '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                                    '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                                    '../assets/global/plugins/typeahead/typeahead.css',
+
+                                    '../assets/global/plugins/fuelux/js/spinner.min.js',
+                                    '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                                    '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                                    '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                                    '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                                    '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                                    '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                                    '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                                    '../assets/global/plugins/typeahead/handlebars.min.js',
+                                    '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                                    '../assets/pages/scripts/components-form-tools-2.min.js',
+                                ]
+                            });
+                        }]
+                    }
+                })
+                //Login
+                .state('account', {
+                    url: "/login",
+                    templateUrl: "account/login.html",
+                    controller: "loginController",
+                    resolve: {
+                        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([{
+                                name: 'ATB',
+                                insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                                files: [
+                                    'account/login.controller.js'
+                                ]
+                            }]);
+                        }]
+                    }
+                })
 
                 // Dashboard
                 .state('dashboard', {
@@ -370,6 +445,44 @@
                                 ]
                             });
                         }]
+                    }
+                })
+
+                //manager
+                .state("index.register",
+                {
+                    url: "/register",
+                    templateUrl: "app/manager/user-create.html",
+                    data: {
+                        pageTitle: "",
+                        roles: [roles.manageUser]
+                    }
+                })
+                .state("index.users",
+                {
+                    url: "/users",
+                    templateUrl: "app/manager/user.html",
+                    data: {
+                        pageTitle: "",
+                        roles: [roles.manageUser]
+                    }
+                })
+                .state("index.user",
+                {
+                    url: "/user",
+                    templateUrl: "app/manager/user-edit.html",
+                    data: {
+                        pageTitle: "",
+                        roles: [roles.manageUser]
+                    }
+                })
+                .state("index.groups",
+                {
+                    url: "/groups",
+                    templateUrl: "app/manager/groups.html",
+                    data: {
+                        pageTitle: "",
+                        roles: [roles.managerProfile]
                     }
                 });
 
