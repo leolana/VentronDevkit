@@ -11,7 +11,7 @@
             $stateProvider
                 //Index
                 .state('index', {
-                    templateUrl: "layout/content.html",
+                    templateUrl: "app/layout/content.html",
                     abstract: true,
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
