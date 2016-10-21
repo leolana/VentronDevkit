@@ -7,7 +7,6 @@
 
     DashboardController.$inject = ['$rootScope', '$scope', '$http', '$timeout'];
     function DashboardController($rootScope, $scope, $http, $timeout) {
-        debugger;
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initAjax();

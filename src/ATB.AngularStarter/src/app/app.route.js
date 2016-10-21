@@ -5,21 +5,19 @@
     angular
         .module('ATB')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            debugger;
             // Redirect any unmatched url
-            $urlRouterProvider.otherwise("/dashboard.html");
+            $urlRouterProvider.otherwise("/dashboard");
 
             $stateProvider
 
                 // Dashboard
                 .state('dashboard', {
-                    url: "dashboard/dashboard.html",
-                    templateUrl: "dashboard/dashboard.html",
+                    url: "/dashboard",
+                    templateUrl: "app/dashboard/dashboard.html",
                     data: { pageTitle: 'Admin Dashboard Template' },
                     controller: "DashboardController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                            debugger;
                             return $ocLazyLoad.load({
                                 name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
@@ -40,7 +38,7 @@
                 // Blank Page
                 .state('blank', {
                     url: "/blank",
-                    templateUrl: "blank/blank.html",
+                    templateUrl: "app/blank/blank.html",
                     data: { pageTitle: 'Blank Page Template' },
                     controller: "BlankController",
                     resolve: {
@@ -58,8 +56,8 @@
 
                 // AngularJS plugins
                 .state('fileupload', {
-                    url: "/file_upload.html",
-                    templateUrl: "general-page/file_upload.html",
+                    url: "/file_upload",
+                    templateUrl: "app/sample/file_upload.html",
                     data: { pageTitle: 'AngularJS File Upload' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -72,7 +70,7 @@
                             }, {
                                 name: 'ATB',
                                 files: [
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -81,8 +79,8 @@
 
                 // UI Select
                 .state('uiselect', {
-                    url: "/ui_select.html",
-                    templateUrl: "general-page/ui_select.html",
+                    url: "/ui_select",
+                    templateUrl: "app/sample/ui-select/ui_select.html",
                     data: { pageTitle: 'AngularJS Ui Select' },
                     controller: "UISelectController",
                     resolve: {
@@ -97,7 +95,7 @@
                             }, {
                                 name: 'ATB',
                                 files: [
-                                    'app/ui-select/ui-select.controller.js'
+                                    'app/sample/ui-select/ui-select.controller.js'
                                 ]
                             }]);
                         }]
@@ -106,8 +104,8 @@
 
                 // UI Bootstrap
                 .state('uibootstrap', {
-                    url: "/ui_bootstrap.html",
-                    templateUrl: "general-page/ui_bootstrap.html",
+                    url: "/ui_bootstrap",
+                    templateUrl: "app/sample/ui_bootstrap.html",
                     data: { pageTitle: 'AngularJS UI Bootstrap' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -115,7 +113,7 @@
                             return $ocLazyLoad.load([{
                                 name: 'ATB',
                                 files: [
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -125,7 +123,7 @@
                 // Tree View
                 .state('tree', {
                     url: "/tree",
-                    templateUrl: "general-page/tree.html",
+                    templateUrl: "app/sample/tree.html",
                     data: { pageTitle: 'jQuery Tree View' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -138,7 +136,7 @@
 
                                     '../assets/global/plugins/jstree/dist/jstree.min.js',
                                     '../assets/pages/scripts/ui-tree.min.js',
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -148,7 +146,7 @@
                 // Form Tools
                 .state('formtools', {
                     url: "/form-tools",
-                    templateUrl: "general-page/form_tools.html",
+                    templateUrl: "app/sample/form_tools.html",
                     data: { pageTitle: 'Form Tools' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -174,7 +172,7 @@
                                     '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
                                     '../assets/pages/scripts/components-form-tools-2.min.js',
 
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -184,7 +182,7 @@
                 // Date & Time Pickers
                 .state('pickers', {
                     url: "/pickers",
-                    templateUrl: "general-page/pickers.html",
+                    templateUrl: "app/sample/pickers.html",
                     data: { pageTitle: 'Date & Time Pickers' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -207,7 +205,7 @@
 
                                     '../assets/pages/scripts/components-date-time-pickers.min.js',
 
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -217,7 +215,7 @@
                 // Custom Dropdowns
                 .state('dropdowns', {
                     url: "/dropdowns",
-                    templateUrl: "general-page/dropdowns.html",
+                    templateUrl: "app/sample/dropdowns.html",
                     data: { pageTitle: 'Custom Dropdowns' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -236,7 +234,7 @@
                                     '../assets/pages/scripts/components-bootstrap-select.min.js',
                                     '../assets/pages/scripts/components-select2.min.js',
 
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -245,8 +243,8 @@
 
                 // Advanced Datatables
                 .state('datatablesmanaged', {
-                    url: "/datatables/managed.html",
-                    templateUrl: "general-page/datatables/managed.html",
+                    url: "/datatables/managed",
+                    templateUrl: "app/sample/datatables/managed.html",
                     data: { pageTitle: 'Advanced Datatables' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -262,7 +260,7 @@
 
                                     '../assets/pages/scripts/table-datatables-managed.min.js',
 
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/general-page.controller.js'
                                 ]
                             });
                         }]
@@ -271,8 +269,8 @@
 
                 // Ajax Datetables
                 .state('datatablesajax', {
-                    url: "/datatables/ajax.html",
-                    templateUrl: "general-page/datatables/ajax.html",
+                    url: "/datatables/ajax",
+                    templateUrl: "app/sample/datatables/ajax.html",
                     data: { pageTitle: 'Ajax Datatables' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -289,8 +287,8 @@
                                     '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
                                     '../assets/global/scripts/datatable.js',
 
-                                    'app/scripts/table-ajax.js',
-                                    'app/general-page/general-page.controller.js'
+                                    'app/sample/datatables/table-ajax.js',
+                                    'app/sample/general-page.controller.js'
                                 ]
                             });
                         }]
@@ -300,7 +298,7 @@
                 // User Profile
                 .state("profile", {
                     url: "/profile",
-                    templateUrl: "profile/profile/main.html",
+                    templateUrl: "app/profile/main.html",
                     data: { pageTitle: 'User Profile' },
                     controller: "UserProfileController",
                     resolve: {
@@ -327,28 +325,28 @@
                 // User Profile Dashboard
                 .state("profile.dashboard", {
                     url: "/dashboard",
-                    templateUrl: "profile/dashboard.html",
+                    templateUrl: "app/profile/dashboard.html",
                     data: { pageTitle: 'User Profile' }
                 })
 
                 // User Profile Account
                 .state("profile.account", {
                     url: "/account",
-                    templateUrl: "profile/account.html",
+                    templateUrl: "app/profile/account.html",
                     data: { pageTitle: 'User Account' }
                 })
 
                 // User Profile Help
                 .state("profile.help", {
                     url: "/help",
-                    templateUrl: "profile/help.html",
+                    templateUrl: "app/profile/help.html",
                     data: { pageTitle: 'User Help' }
                 })
 
                 // Todo
                 .state('todo', {
                     url: "/todo",
-                    templateUrl: "todo/todo.html",
+                    templateUrl: "app/todo/todo.html",
                     data: { pageTitle: 'Todo' },
                     controller: "TodoController",
                     resolve: {
@@ -373,7 +371,7 @@
                             });
                         }]
                     }
-                })
+                });
 
         }]);
 
