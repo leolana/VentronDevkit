@@ -9,7 +9,7 @@
 
     /* Setup Layout Part - Header */
     angular
-        .module('Module')
+        .module('ATB')
         .controller('HeaderController', HeaderController);
 
     HeaderController.$inject = ['$scope'];

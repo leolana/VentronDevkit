@@ -7,6 +7,7 @@
      * performs a AND between 'name: $select.search' and 'age: $select.search'.
      * We want to perform a OR.
      */
+
     angular
         .module('ATB')
         .filter('propsFilter', function () {

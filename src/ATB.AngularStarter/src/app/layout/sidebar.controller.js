@@ -6,8 +6,8 @@
         .module('ATB')
         .controller('SidebarController', SidebarController);
 
-    SidebarController.$inject = ['$scope'];
-    function SidebarController($scope) {
+    SidebarController.$inject = ['$state', '$scope'];
+    function SidebarController($state, $scope) {
         $scope.$on('$includeContentLoaded', function () {
             Layout.initSidebar($state); // init sidebar
         });

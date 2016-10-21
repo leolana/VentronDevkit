@@ -3,7 +3,7 @@ Metronic AngularJS App Main Script
 ***/
 
 /* Metronic App */
-var MetronicApp = angular.module("MetronicApp", [
+var MetronicApp = angular.module("ATB", [
     "ui.router", 
     "ui.bootstrap", 
     "oc.lazyLoad",  
@@ -48,4 +48,8 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
     return settings;
 }]);
 
-
+/* Init global settings and run the app */
+MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
+    $rootScope.$state = $state; // state to be accessed from view
+    $rootScope.$settings = settings; // state to be accessed from view
+}]);

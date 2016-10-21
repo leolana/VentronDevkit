@@ -12,14 +12,14 @@
 
                 // Dashboard
                 .state('dashboard', {
-                    url: "/dashboard.html",
-                    templateUrl: "views/dashboard.html",
+                    url: "dashboard/dashboard.html",
+                    templateUrl: "dashboard/dashboard.html",
                     data: { pageTitle: 'Admin Dashboard Template' },
                     controller: "DashboardController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                                 files: [
                                     '../assets/global/plugins/morris/morris.css',
@@ -28,7 +28,7 @@
                                     '../assets/global/plugins/jquery.sparkline.min.js',
 
                                     '../assets/pages/scripts/dashboard.min.js',
-                                    'js/controllers/DashboardController.js',
+                                    'app/dashboard/dashboard.controller.js',
                                 ]
                             });
                         }]
@@ -38,16 +38,16 @@
                 // Blank Page
                 .state('blank', {
                     url: "/blank",
-                    templateUrl: "views/blank.html",
+                    templateUrl: "blank/blank.html",
                     data: { pageTitle: 'Blank Page Template' },
                     controller: "BlankController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                                 files: [
-                                    'js/controllers/BlankController.js'
+                                    'app/blank/blank.controller.js'
                                 ]
                             });
                         }]
@@ -57,7 +57,7 @@
                 // AngularJS plugins
                 .state('fileupload', {
                     url: "/file_upload.html",
-                    templateUrl: "views/file_upload.html",
+                    templateUrl: "general-page/file_upload.html",
                     data: { pageTitle: 'AngularJS File Upload' },
                     controller: "GeneralPageController",
                     resolve: {
@@ -68,9 +68,9 @@
                                     '../assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
                                 ]
                             }, {
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 files: [
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -80,7 +80,7 @@
                 // UI Select
                 .state('uiselect', {
                     url: "/ui_select.html",
-                    templateUrl: "views/ui_select.html",
+                    templateUrl: "general-page/ui_select.html",
                     data: { pageTitle: 'AngularJS Ui Select' },
                     controller: "UISelectController",
                     resolve: {
@@ -93,9 +93,9 @@
                                     '../assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
                                 ]
                             }, {
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 files: [
-                                    'js/controllers/UISelectController.js'
+                                    'app/ui-select/ui-select.controller.js'
                                 ]
                             }]);
                         }]
@@ -105,15 +105,15 @@
                 // UI Bootstrap
                 .state('uibootstrap', {
                     url: "/ui_bootstrap.html",
-                    templateUrl: "views/ui_bootstrap.html",
+                    templateUrl: "general-page/ui_bootstrap.html",
                     data: { pageTitle: 'AngularJS UI Bootstrap' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([{
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 files: [
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -123,20 +123,20 @@
                 // Tree View
                 .state('tree', {
                     url: "/tree",
-                    templateUrl: "views/tree.html",
+                    templateUrl: "general-page/tree.html",
                     data: { pageTitle: 'jQuery Tree View' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([{
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/jstree/dist/themes/default/style.min.css',
 
                                     '../assets/global/plugins/jstree/dist/jstree.min.js',
                                     '../assets/pages/scripts/ui-tree.min.js',
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -146,13 +146,13 @@
                 // Form Tools
                 .state('formtools', {
                     url: "/form-tools",
-                    templateUrl: "views/form_tools.html",
+                    templateUrl: "general-page/form_tools.html",
                     data: { pageTitle: 'Form Tools' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([{
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
@@ -172,7 +172,7 @@
                                     '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
                                     '../assets/pages/scripts/components-form-tools-2.min.js',
 
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -182,13 +182,13 @@
                 // Date & Time Pickers
                 .state('pickers', {
                     url: "/pickers",
-                    templateUrl: "views/pickers.html",
+                    templateUrl: "general-page/pickers.html",
                     data: { pageTitle: 'Date & Time Pickers' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([{
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/clockface/css/clockface.css',
@@ -205,7 +205,7 @@
 
                                     '../assets/pages/scripts/components-date-time-pickers.min.js',
 
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -215,13 +215,13 @@
                 // Custom Dropdowns
                 .state('dropdowns', {
                     url: "/dropdowns",
-                    templateUrl: "views/dropdowns.html",
+                    templateUrl: "general-page/dropdowns.html",
                     data: { pageTitle: 'Custom Dropdowns' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([{
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
@@ -234,7 +234,7 @@
                                     '../assets/pages/scripts/components-bootstrap-select.min.js',
                                     '../assets/pages/scripts/components-select2.min.js',
 
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             }]);
                         }]
@@ -244,13 +244,13 @@
                 // Advanced Datatables
                 .state('datatablesmanaged', {
                     url: "/datatables/managed.html",
-                    templateUrl: "views/datatables/managed.html",
+                    templateUrl: "general-page/datatables/managed.html",
                     data: { pageTitle: 'Advanced Datatables' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/datatables/datatables.min.css',
@@ -260,7 +260,7 @@
 
                                     '../assets/pages/scripts/table-datatables-managed.min.js',
 
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             });
                         }]
@@ -270,13 +270,13 @@
                 // Ajax Datetables
                 .state('datatablesajax', {
                     url: "/datatables/ajax.html",
-                    templateUrl: "views/datatables/ajax.html",
+                    templateUrl: "general-page/datatables/ajax.html",
                     data: { pageTitle: 'Ajax Datatables' },
                     controller: "GeneralPageController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/datatables/datatables.min.css',
@@ -287,8 +287,8 @@
                                     '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
                                     '../assets/global/scripts/datatable.js',
 
-                                    'js/scripts/table-ajax.js',
-                                    'js/controllers/GeneralPageController.js'
+                                    'app/scripts/table-ajax.js',
+                                    'app/general-page/general-page.controller.js'
                                 ]
                             });
                         }]
@@ -298,13 +298,13 @@
                 // User Profile
                 .state("profile", {
                     url: "/profile",
-                    templateUrl: "views/profile/main.html",
+                    templateUrl: "profile/profile/main.html",
                     data: { pageTitle: 'User Profile' },
                     controller: "UserProfileController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
@@ -315,7 +315,7 @@
 
                                     '../assets/pages/scripts/profile.min.js',
 
-                                    'js/controllers/UserProfileController.js'
+                                    'app/profile/user-profile.controller.js'
                                 ]
                             });
                         }]
@@ -325,34 +325,34 @@
                 // User Profile Dashboard
                 .state("profile.dashboard", {
                     url: "/dashboard",
-                    templateUrl: "views/profile/dashboard.html",
+                    templateUrl: "profile/dashboard.html",
                     data: { pageTitle: 'User Profile' }
                 })
 
                 // User Profile Account
                 .state("profile.account", {
                     url: "/account",
-                    templateUrl: "views/profile/account.html",
+                    templateUrl: "profile/account.html",
                     data: { pageTitle: 'User Account' }
                 })
 
                 // User Profile Help
                 .state("profile.help", {
                     url: "/help",
-                    templateUrl: "views/profile/help.html",
+                    templateUrl: "profile/help.html",
                     data: { pageTitle: 'User Help' }
                 })
 
                 // Todo
                 .state('todo', {
                     url: "/todo",
-                    templateUrl: "views/todo.html",
+                    templateUrl: "todo/todo.html",
                     data: { pageTitle: 'Todo' },
                     controller: "TodoController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                name: 'MetronicApp',
+                                name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
                                 files: [
                                     '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
@@ -366,7 +366,7 @@
 
                                     '../assets/apps/scripts/todo-2.min.js',
 
-                                    'js/controllers/TodoController.js'
+                                    'app/todo/todo.controller.js'
                                 ]
                             });
                         }]
