@@ -9,11 +9,11 @@
     function UserController($scope, $location, userService) {
         var self = this;
 
-        userService.get()
-            .then(function (data) {
-                self.list = data;
-                self.gridOptions.data = data;
-            });
+        // userService.get()
+        //     .then(function (data) {
+        //         self.list = data;
+        //         self.gridOptions.data = data;
+        //     });
 
         $scope.edit = function (id) {
             $location.search().id = id;

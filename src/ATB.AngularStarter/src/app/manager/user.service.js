@@ -6,7 +6,7 @@
         .factory('userService', userService);
 
     userService.$inject = ['$http'];
-    function service($http) {
+    function userService($http) {
         var service = {
             get: get
         };
