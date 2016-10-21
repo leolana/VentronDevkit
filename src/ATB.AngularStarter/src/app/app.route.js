@@ -86,7 +86,8 @@
                 })
 
                 // Dashboard
-                .state('index.dashboard', {
+                .state('dashboard', {
+                    parent: "index",
                     url: "/dashboard",
                     templateUrl: "app/dashboard/dashboard.html",
                     data: { pageTitle: 'Admin Dashboard Template' },
@@ -111,7 +112,8 @@
                 })
 
                 // Blank Page
-                .state('index.blank', {
+                .state('blank', {
+                    parent: "index",
                     url: "/blank",
                     templateUrl: "app/sample/blank/blank.html",
                     data: { pageTitle: 'Blank Page Template' },
@@ -130,7 +132,8 @@
                 })
 
                 // AngularJS plugins
-                .state('index.fileupload', {
+                .state('fileupload', {
+                    parent: "index",
                     url: "/file_upload",
                     templateUrl: "app/sample/file_upload.html",
                     data: { pageTitle: 'AngularJS File Upload' },
@@ -153,7 +156,8 @@
                 })
 
                 // UI Select
-                .state('index.uiselect', {
+                .state('uiselect', {
+                    parent: "index",
                     url: "/ui_select",
                     templateUrl: "app/sample/ui-select/ui_select.html",
                     data: { pageTitle: 'AngularJS Ui Select' },
@@ -178,7 +182,8 @@
                 })
 
                 // UI Bootstrap
-                .state('index.uibootstrap', {
+                .state('uibootstrap', {
+                    parent: "index",
                     url: "/ui_bootstrap",
                     templateUrl: "app/sample/ui_bootstrap.html",
                     data: { pageTitle: 'AngularJS UI Bootstrap' },
@@ -196,7 +201,8 @@
                 })
 
                 // Tree View
-                .state('index.tree', {
+                .state('tree', {
+                    parent: "index",
                     url: "/tree",
                     templateUrl: "app/sample/tree.html",
                     data: { pageTitle: 'jQuery Tree View' },
@@ -219,7 +225,8 @@
                 })
 
                 // Form Tools
-                .state('index.formtools', {
+                .state('formtools', {
+                    parent: "index",
                     url: "/form-tools",
                     templateUrl: "app/sample/form_tools.html",
                     data: { pageTitle: 'Form Tools' },
@@ -255,7 +262,8 @@
                 })
 
                 // Date & Time Pickers
-                .state('index.pickers', {
+                .state('pickers', {
+                    parent: "index",
                     url: "/pickers",
                     templateUrl: "app/sample/pickers.html",
                     data: { pageTitle: 'Date & Time Pickers' },
@@ -288,7 +296,8 @@
                 })
 
                 // Custom Dropdowns
-                .state('index.dropdowns', {
+                .state('dropdowns', {
+                    parent: "index",
                     url: "/dropdowns",
                     templateUrl: "app/sample/dropdowns.html",
                     data: { pageTitle: 'Custom Dropdowns' },
@@ -317,7 +326,8 @@
                 })
 
                 // Advanced Datatables
-                .state('index.datatablesmanaged', {
+                .state('datatablesmanaged', {
+                    parent: "index",
                     url: "/datatables/managed",
                     templateUrl: "app/sample/datatables/managed.html",
                     data: { pageTitle: 'Advanced Datatables' },
@@ -343,7 +353,8 @@
                 })
 
                 // Ajax Datetables
-                .state('index.datatablesajax', {
+                .state('datatablesajax', {
+                    parent: "index",
                     url: "/datatables/ajax",
                     templateUrl: "app/sample/datatables/ajax.html",
                     data: { pageTitle: 'Ajax Datatables' },
@@ -371,7 +382,8 @@
                 })
 
                 // User Profile
-                .state("index.profile", {
+                .state("profile", {
+                    parent: "index",
                     url: "/profile",
                     templateUrl: "app/profile/main.html",
                     data: { pageTitle: 'User Profile' },
@@ -419,7 +431,8 @@
                 })
 
                 // Todo
-                .state('index.todo', {
+                .state('todo', {
+                    parent: "index",
                     url: "/todo",
                     templateUrl: "app/todo/todo.html",
                     data: { pageTitle: 'Todo' },
@@ -462,7 +475,21 @@
                     url: "/users",
                     templateUrl: "app/manager/user.html",
                     data: {
-                        pageTitle: ""
+                        pageTitle: "Usuários"
+                    },
+                    controller: "UserController",
+                    controllerAs: "users",
+                    resolve: {
+                        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                name: 'ATB',
+                                insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                                files: [
+                                    'app/manager/user.controller.js',
+                                    'app/manager/user.service.js',
+                                ]
+                            });
+                        }]
                     }
                 })
                 .state("index.user",
