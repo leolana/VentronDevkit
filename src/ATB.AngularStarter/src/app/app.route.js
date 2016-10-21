@@ -454,8 +454,7 @@
                     url: "/register",
                     templateUrl: "app/manager/user-create.html",
                     data: {
-                        pageTitle: "",
-                        roles: [roles.manageUser]
+                        pageTitle: ""
                     }
                 })
                 .state("index.users",
@@ -463,8 +462,7 @@
                     url: "/users",
                     templateUrl: "app/manager/user.html",
                     data: {
-                        pageTitle: "",
-                        roles: [roles.manageUser]
+                        pageTitle: ""
                     }
                 })
                 .state("index.user",
@@ -472,8 +470,7 @@
                     url: "/user",
                     templateUrl: "app/manager/user-edit.html",
                     data: {
-                        pageTitle: "",
-                        roles: [roles.manageUser]
+                        pageTitle: ""
                     }
                 })
                 .state("index.groups",
@@ -481,8 +478,7 @@
                     url: "/groups",
                     templateUrl: "app/manager/groups.html",
                     data: {
-                        pageTitle: "",
-                        roles: [roles.managerProfile]
+                        pageTitle: ""
                     }
                 });
 
