@@ -12,6 +12,7 @@ var MetronicApp = angular.module("ATB", [
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 MetronicApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
+    debugger;
     $ocLazyLoadProvider.config({
         // global configs go here
     });
@@ -19,6 +20,7 @@ MetronicApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
 
 //AngularJS v1.3.x workaround for old style controller declarition in HTML
 MetronicApp.config(['$controllerProvider', function($controllerProvider) {
+    debugger;
   // this option might be handy for migrating old apps, but please don't use it
   // in new ones!
   $controllerProvider.allowGlobals();
@@ -30,6 +32,7 @@ MetronicApp.config(['$controllerProvider', function($controllerProvider) {
 
 /* Setup global settings */
 MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
+    debugger;
     // supported languages
     var settings = {
         layout: {
@@ -50,6 +53,7 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 
 /* Init global settings and run the app */
 MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
+    debugger;
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
 }]);

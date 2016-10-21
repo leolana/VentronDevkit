@@ -1,8 +1,16 @@
-angular.module('MetronicApp')
-    .controller('UISelectController', function ($scope, $http, $timeout, $interval) {
+(function () {
+    'use strict';
+
+    angular
+        .module('ATB')
+        .controller('UISelectController', UISelectController);
+
+    UISelectController.$inject = ['$scope', '$http', '$timeout', '$interval'];
+    function UISelectController($scope, $http, $timeout, $interval) {
         $scope.$on('$viewContentLoaded', function () {
             //App.initAjax(); // initialize core components
         });
+
 
         var vm = this;
 
@@ -1048,4 +1056,6 @@ angular.module('MetronicApp')
                 code: 'ZW'
             }
         ];
-    });
+    }
+})();
+

@@ -5,6 +5,7 @@
     angular
         .module('ATB')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            debugger;
             // Redirect any unmatched url
             $urlRouterProvider.otherwise("/dashboard.html");
 
@@ -18,6 +19,7 @@
                     controller: "DashboardController",
                     resolve: {
                         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            debugger;
                             return $ocLazyLoad.load({
                                 name: 'ATB',
                                 insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
