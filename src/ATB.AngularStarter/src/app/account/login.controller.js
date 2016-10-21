@@ -1,44 +1,48 @@
-angular.module('SoulBoxAdminApp')
+(function () {
+    'use strict';
 
-.controller('loginController', function($rootScope, $scope, $http, $timeout, $location, authService, userNotificationService, NotificationService) {
-    $scope.$on('$viewContentLoaded', function() {
-        // initialize core components
-        App.initComponents(); // init core components
-        Layout.init(); //
-        App.initAjax();
-    });
+    angular
+        .module('ATB')
+        .controller('LoginController', LoginController);
 
-    debugger;
-    var vm = this;
-    var dataService = $http;
+    LoginController.$inject = ['$rootScope', '$scope', '$http', '$timeout', '$location', 'authService', 'userNotificationService', 'NotificationService'];
+    function LoginController($rootScope, $scope, $http, $timeout, $location, authService, userNotificationService, NotificationService) {
+        $scope.$on('$viewContentLoaded', function () {
+            // initialize core components
+            App.initComponents(); // init core components
+            Layout.init(); //
+            App.initAjax();
+        });
 
-    vm.loginViewState = {
-        isUserLogging: false,
-        isUserSignup: false,
-        isUserRecoveringPassword: false,
-        signupStep: 1
-    };
+        var vm = this;
+        var dataService = $http;
 
-    vm.loginData = {
-        "email": "",
-        "password": ""
-    };
+        vm.loginViewState = {
+            isUserLogging: false,
+            isUserSignup: false,
+            isUserRecoveringPassword: false,
+            signupStep: 1
+        };
 
-    vm.login = function() {
+        vm.loginData = {
+            "email": "",
+            "password": ""
+        };
 
-        if (vm.loginData.email === "") {
-            NotificationService.error("Atenção", "E-mail é obrigatório.", true);
-            return;
-        }
+        vm.login = function () {
 
-        if (vm.loginData.password === "") {
-            NotificationService.error("Atenção", "Senha é obrigatória.", true);
-            return;
-        }
+            if (vm.loginData.email === "") {
+                NotificationService.error("Atenção", "E-mail é obrigatório.", true);
+                return;
+            }
 
-        authService.login(vm.loginData)
-            .then(function(response) {
-                    debugger;
+            if (vm.loginData.password === "") {
+                NotificationService.error("Atenção", "Senha é obrigatória.", true);
+                return;
+            }
+
+            authService.login(vm.loginData)
+                .then(function (response) {
                     // vm.closeLogin();
                     vm.loginData.email = "";
                     vm.loginData.password = "";
@@ -46,14 +50,14 @@ angular.module('SoulBoxAdminApp')
                     $location.path('/dashboard');
 
                 },
-                function(err) {
-                    debugger;
-                    NotificationService.error("Atenção",err.error_description, false);
+                function (err) {
+                    NotificationService.error("Atenção", err.error_description, false);
                 });
-    };
+        };
 
-    // set sidebar closed and body solid layout mode
-    // $rootScope.settings.layout.pageContentWhite = true;
-    // $rootScope.settings.layout.pageBodySolid = false;
-    // $rootScope.settings.layout.pageSidebarClosed = false;
-});
+        // set sidebar closed and body solid layout mode
+        // $rootScope.settings.layout.pageContentWhite = true;
+        // $rootScope.settings.layout.pageBodySolid = false;
+        // $rootScope.settings.layout.pageSidebarClosed = false;
+    }
+})();
