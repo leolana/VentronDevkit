@@ -1,0 +1,5 @@
+Site do template:
+https://codecanyon.net/item/ionic-material-design/12833673
+
+Documentação do template:
+http://doc.ionicmaterialdesign.com/
